@@ -1,6 +1,6 @@
 # MineralContest
-Plugin pour minecraft 1.14.4 fortement inspiré du plugin "Mineral Contest" de Squeezie.\n
-A renseigner dans la classe GlobalData.java :
+Plugin pour minecraft 1.14.4 fortement inspiré du plugin "Mineral Contest" de Squeezie.
+À renseigner dans la classe GlobalData.java :
 Localisation du spawn de départ.
 Localisation des spawns de chaque équipes.
 Localisation de l'arène pour la téléportation.
