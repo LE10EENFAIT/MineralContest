@@ -1,10 +1,16 @@
 # MineralContest
 Plugin pour minecraft 1.14.4 fortement inspiré du plugin "Mineral Contest" de Squeezie.
+
 À renseigner dans la classe GlobalData.java :
+
 Localisation du spawn de départ.
+
 Localisation des spawns de chaque équipes.
+
 Localisation de l'arène pour la téléportation.
+
 Localisation du coffre d'arène.
+
 Localisation des coffres de chaque équipes.
 
 4 équipes de 4 joueurs maximum.
