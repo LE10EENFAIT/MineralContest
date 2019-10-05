@@ -14,6 +14,7 @@ Localisation du coffre d'arène.
 Localisation des coffres de chaque équipes.
 
 4 équipes de 4 joueurs maximum.
+
 Les commandes sont : 
 ```shell
 /mcontest nbteam [nombre d'équipes à ajouter au jeu]
