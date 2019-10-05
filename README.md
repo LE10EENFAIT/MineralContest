@@ -13,6 +13,8 @@ Localisation du coffre d'arène.
 
 Localisation des coffres de chaque équipes.
 
+Une fois ces changements effectués, pour compiler un .jar ce plugin, n'oubliez d'y inclure le fichier plugin.yml.
+
 4 équipes de 4 joueurs maximum.
 
 Les commandes sont : 
