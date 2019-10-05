@@ -47,3 +47,10 @@ Arrête le jeu si il est commencé et remet les paramètres à zéro.
 Permet de se téléporter à l'arène si un coffre d'arène est présent.
 
 
+
+Pour utiliser le plugin, mettez MineralContest.jar dans le dossier plugin de votre serveur.
+
+
+Pour modifier le code source, ajoutez la librairie spigot.jar de votre serveur dans le projet.
+
+
