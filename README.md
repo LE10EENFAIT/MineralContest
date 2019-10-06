@@ -15,6 +15,14 @@ Localisation des coffres de chaque équipes.
 
 Une fois ces changements effectués, pour compiler un .jar ce plugin, n'oubliez d'y inclure le fichier plugin.yml.
 
+Pour utiliser le plugin, mettez MineralContest.jar dans le dossier plugin de votre serveur.
+
+
+Pour modifier le code source, ajoutez la librairie spigot.jar de votre serveur dans le projet.
+
+
+
+
 4 équipes de 4 joueurs maximum.
 
 Les commandes sont : 
@@ -45,12 +53,5 @@ Arrête le jeu si il est commencé et remet les paramètres à zéro.
 /arena
 ```
 Permet de se téléporter à l'arène si un coffre d'arène est présent.
-
-
-
-Pour utiliser le plugin, mettez MineralContest.jar dans le dossier plugin de votre serveur.
-
-
-Pour modifier le code source, ajoutez la librairie spigot.jar de votre serveur dans le projet.
 
 
