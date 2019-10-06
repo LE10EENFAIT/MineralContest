@@ -23,6 +23,10 @@ Pour modifier le code source, ajoutez la librairie spigot.jar de votre serveur d
 
 
 
+
+
+
+
 4 équipes de 4 joueurs maximum.
 
 Les commandes sont : 
