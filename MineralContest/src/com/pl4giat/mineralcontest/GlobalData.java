@@ -30,9 +30,8 @@ public class GlobalData {
     private RespawnRoom respawnRoom = new RespawnRoom();
     public RespawnRoom getRespawnRoom(){ return respawnRoom; }
 
-    private World world = null;
-    public void setWorld(World w){ world = w; }
-    public World getWorld(){ return world; }
+    private World world = Bukkit.getWorld("World");
+    public World getWorld() {return world; }
 
 
     HashMap<String, double[]> locations = new HashMap<String, double[]>();
@@ -49,14 +48,18 @@ public class GlobalData {
     private double[] blue_team_spawn_location = {187.536, 76, -197.523};
     public double[] getBlue_team_spawn_location(){ return blue_team_spawn_location; }
 
+
     private double[] yellow_team_spawn_location = {186.807, 76, -271.521};
     public double[] getYellow_team_spawn_location() { return yellow_team_spawn_location; }
+
 
     private double[] red_team_spawn_location = {223.814, 76, -234.515};
     public double[] getRed_team_spawn_location(){ return red_team_spawn_location; }
 
+
     private double[] green_team_spawn_location = {149.468, 76, -235.218};
     public double[] getGreen_team_spawn_location(){ return green_team_spawn_location; }
+
 
     private ItemStack[] respawn_player_items = {new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.BOW, 1), new ItemStack(Material.ARROW, 64)};
     public ItemStack[] getRespawn_player_items(){ return respawn_player_items; }
@@ -208,19 +211,26 @@ public class GlobalData {
     public long getTimeRemaining(){ return time_remaining; }
     public void setTimeRemaining(int time){ time_remaining = time; }
 
-    private long[] time_spawn_arena_chest = new long[5];
+    private long[] time_spawn_arena_chest = new long[7];
     public void InitTimeSpawnArenaChest(){
         Random r = new Random();
         long time = ending_time - starting_time;
-        for(int i = 0; i<time_spawn_arena_chest.length; i++){
-            time_spawn_arena_chest[i] = r.nextInt((int) (time - wait_time));
+        for(int i = 0; i<4; i++){
+            time_spawn_arena_chest[i] = r.nextInt((int) (time)) + wait_time;
         }
+
+        for (int i = 4; i<time_spawn_arena_chest.length; i++){
+            time_spawn_arena_chest[i] = time - (r.nextInt(480) + 120);
+        }
+
         Arrays.sort(time_spawn_arena_chest);
     }
     public long[] getTime_spawn_arena_chest(){ return time_spawn_arena_chest; }
 
     private int nbArenaChest = 0;
-    public void setNbArenaChest(int nbArenaChest) { this.nbArenaChest = nbArenaChest; }
+    public void setNbArenaChest(int nbArenaChest) {
+        if(nbArenaChest < time_spawn_arena_chest.length)
+            this.nbArenaChest = nbArenaChest; }
     public int getNbArenaChest() {return nbArenaChest; }
 
     private Player[] players_event = new Player[16];
@@ -245,7 +255,7 @@ public class GlobalData {
     }
 
 
-    private double[] blue_chest_location = {181.514, 76, -196.384};
+    private double[] blue_chest_location = {180.462, 76, -197.417};
     public double[] getBlue_chest_location(){ return  blue_chest_location; }
     public Chest getBlueChest(){
         Chest c = null;
@@ -256,7 +266,7 @@ public class GlobalData {
         return c;
     }
 
-    private double[] yellow_chest_location = {191.671, 76, -269.521};
+    private double[] yellow_chest_location = {192.697, 76, -269.429};
     public double[] getYellow_chest_location(){ return  yellow_chest_location; }
     public Chest getYellowChest(){
         Chest c = null;

@@ -3,12 +3,15 @@ package com.pl4giat.mineralcontest;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -76,10 +79,24 @@ public class MineralContestListeners implements Listener {
         if(g.getIs_Started() && !g.getWait_before_start() && g.getTime_spawn_arena_chest()[g.getNbArenaChest()] == g.getElapsedTime()) {
             if(!g.getIsArenaChest()) {
                 g.add_arena_chest();
-                g.sendMessagePlayers_event(ChatColor.RED + "A chest has appeared in the arena!");
+                g.sendMessagePlayers_event(ChatColor.RED + "A chest has appeared in the arena! " + ChatColor.RED + "/arena to tp in the arena.");
                 g.setNbArenaChest(g.getNbArenaChest() + 1);
             } else {
                 g.setNbArenaChest(g.getNbArenaChest() + 1);
+            }
+        }
+    }
+
+    @EventHandler
+    public void CheckArenaChestOnOpen(InventoryOpenEvent e){
+        if(g.getIsArenaChest()){
+            Chest actual_chest = null;
+            Chest chest_arena = g.getArenaChest();
+            if(e.getInventory().getHolder() instanceof Chest) {
+                actual_chest = (Chest) e.getInventory().getHolder();
+            }
+            if (actual_chest != null && actual_chest.equals(chest_arena)){
+                g.sendMessagePlayers_event(ChatColor.RED + "The arena chest has been open!!");
             }
         }
     }
@@ -100,25 +117,14 @@ public class MineralContestListeners implements Listener {
                         break;
                     }
                 }
-                if (is_empty)
+                if (is_empty) {
                     g.remove_arena_chest();
+                    g.sendMessagePlayers_event(ChatColor.LIGHT_PURPLE + "The is now empty. You cannot /arena anymore.");
+                }
             }
         }
     }
 
-    @EventHandler
-    public void CheckArenaChestOnOpen(InventoryOpenEvent e){
-        if(g.getIsArenaChest()){
-            Chest actual_chest = null;
-            Chest chest_arena = g.getArenaChest();
-            if(e.getInventory().getHolder() instanceof Chest) {
-                actual_chest = (Chest) e.getInventory().getHolder();
-            }
-            if (actual_chest != null && actual_chest.equals(chest_arena)){
-                g.sendMessagePlayers_event(ChatColor.RED + "The arena chest has been open!!");
-            }
-        }
-    }
 
     @EventHandler
     public void CheckTeamChest(InventoryCloseEvent e){
@@ -232,7 +238,7 @@ public class MineralContestListeners implements Listener {
            g.getTimeRemaining() != 0 && !g.getWait_before_start()){
             g.setTimeRemaining((int) ((g.getEnding_time() - g.getStarting_time()) - g.getElapsedTime()));
             g.sendMessagePlayers_event(ChatColor.LIGHT_PURPLE + "Time remaining : " + ((g.getEnding_time() - g.getStarting_time()) - g.getElapsedTime())/60 + " minutes.");
-            if((g.getEnding_time() - g.getStarting_time()) - g.getElapsedTime()/60 == 10)
+            if(((g.getEnding_time() - g.getStarting_time()) - g.getElapsedTime())/60 == 10)
                 g.setModulo(5);
         }
     }
@@ -244,7 +250,5 @@ public class MineralContestListeners implements Listener {
             player.setFoodLevel(20);
         }
     }
-
-
 
 }

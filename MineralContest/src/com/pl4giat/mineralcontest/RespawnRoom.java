@@ -4,14 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class RespawnRoom {
-    private Player[] players = new Player[16];
+    private Player[] players = new Player[3];
     private int player_length = 0;
 
-    public void addPlayer(Player p){
+    public void addPlayer(Player p) {
+        Bukkit.getConsoleSender().sendMessage(String.valueOf(player_length));
         players[player_length] = p;
-        player_length++;
-        for(int i = 0; i<player_length; i++)
-            Bukkit.getConsoleSender().sendMessage(players[i].getDisplayName());
+        player_length = 1;
+        Bukkit.getConsoleSender().sendMessage(String.valueOf(player_length));
     }
     public boolean IsPlayerInRespawnRoom(Player p){
         if(players != null) {
@@ -53,10 +53,15 @@ public class RespawnRoom {
         }
 
         if(ret) {
-            players = anotherArray;
+            for(int i = 0; i<anotherArray.length; i++){
+                players[i] = anotherArray[i];
+            }
+
+            for(int i = anotherArray.length; i<players.length; i++){
+                players[i] = null;
+            }
             player_length--;
         }
-
         return ret;
     }
 

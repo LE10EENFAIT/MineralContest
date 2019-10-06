@@ -1,6 +1,7 @@
 name: MineralContest
 main: com.pl4giat.mineralcontest.Main
 version: 1.0
+api-version: 1.13
 commands:
   mcontest:
     usage: /mcontest [args]

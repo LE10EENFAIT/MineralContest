@@ -36,8 +36,6 @@ public class EventStart {
                     g.equip_player(p);
                 }
             }
-
-            g.setWorld(g.getPlayers_event()[0].getWorld());
             g.clearChest();
 
             g.setWait_before_start(true);
